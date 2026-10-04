@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply bg-[#121212] text-gray-100 antialiased;
+  }
+}
+
+.modal-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: calc(100vw - 2rem);
+  max-width: 40rem;
+  max-height: 85vh;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+  animation: modal-content-in 200ms ease-out;
+}
+
+.modal-overlay {
+  animation: modal-overlay-in 200ms ease-out;
+}
+
+.modal-overlay[data-state='closed'] {
+  animation: modal-overlay-out 150ms ease-in;
+}
+
+.modal-content[data-state='closed'] {
+  animation: modal-content-out 150ms ease-in;
+}
+
+@keyframes modal-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-overlay-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-content-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(0.96);
+  }
+}
+
+@keyframes modal-content-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -54%) scale(0.96);
+  }
+}
